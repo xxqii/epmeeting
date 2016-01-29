@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <constant name="struts.action.extension" value="action" />
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.multipart.saveDir" value="/upload"></constant>
+
+    <!-- 加载struts2配置文件 -->
+    <include file="./action/user-action.xml" />
+
+    <package name="struts2" extends="struts-default,json-default" namespace="/">
+        <interceptors>
+            <interceptor name="login" class="com.epmeeting.action.LoginInterceptor"></interceptor>
+            <interceptor-stack name="loginCheck">
+                <interceptor-ref name="login"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="loginCheck"></default-interceptor-ref>
+        <global-results>
+            <result name="error">/error.jsp</result>
+            <result name="login">/login.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping result="error" exception="java.lang.Throwable" />
+        </global-exception-mappings>
+
+        <action name="login" class="com.epmeeting.action.LoginAction" method="login">
+            <result name="system_admin">/pages/admin/homepage.jsp</result>
+        </action>
+    </package>
+</struts>

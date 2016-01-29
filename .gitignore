@@ -1,0 +1,18 @@
+EPMeeting/target
+EPMeeting/logs
+
+# eclipse
+.classpath
+.project
+.settings
+
+# idea
+EPMeeting/.idea
+*.iml
+*.ipr
+*.iws
+
+# maven
+*.versionsBackup
+
+.DS_Store
