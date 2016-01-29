@@ -18,11 +18,7 @@
                             <div class="li-item"><em class="scm li-ico ic1"></em>用户管理<span class="scm arrow"></span></div>
                             <dl>
                                 <dd>
-                                    <a href="#" class="dd-item">查找用户<span class="scm dd-ar"></span></a>
-                                    <ul class="ad-item-list">
-                                        <li class="J_menuItem" href="index_v1.html" data-index="1">测试用例一</li>
-                                        <li class="J_menuItem" href="index_v2.html" data-index="2">测试用例二</li>
-                                    </ul>
+                                    <a href="/user/u_list.action" class="dd-item">查找用户<span class="scm dd-ar"></span></a>
                                 </dd>
                                 <dd>
                                     <a href="#" class="dd-item">新增用户<span class="scm dd-ar"></span></a>
