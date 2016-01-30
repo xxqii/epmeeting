@@ -1,5 +1,5 @@
-import com.epmeeting.dao.UserDao;
-import com.epmeeting.module.EpmUser;
+import com.epmeeting.dao.IssueFieldDao;
+import com.epmeeting.module.IssueField;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -10,41 +10,42 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
- * Created by chqi on 2016/1/27.
+ * Created by Administrator on 2016/1/29.
  */
-public class UserTest {
-    UserDao dao;
+public class IssueFieldTest {
+    IssueFieldDao dao;
+
     @Before
     public void before() {
         ApplicationContext c = new ClassPathXmlApplicationContext("spring.xml");
-        dao = (UserDao)c.getBean("userDao");
+        dao = (IssueFieldDao) c.getBean("issueFieldDao");
     }
 
     @Test
     public void testAdd() {
 //        UserDao dao = (UserDao)c.getBean("userDao");
         System.out.println(dao.getClass().getCanonicalName());
-        EpmUser user = new EpmUser();
-        user.setUserType((short)1);
-        user.setUserName("zhangsi@bainainfo.com");
-        user.setRoleIds("1,");
-        user.setRealName("张思");
-        user.setAvatar("http://img1.imgtn.bdimg.com/it/u=363281080,427001469&fm=21&gp=0.jpg");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddd");
-        try {
-            user.setBirthday(sdf.parse("1985-03-12"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        user.setPasswdMd5("asdfg");
+        IssueField user = new IssueField();
+        user.setField_id(1);
+        user.setIssue_id(1);
         int result = dao.add(user);
         System.out.println("save user finished, result = " + result);
     }
+
     @Test
-    public void testGet() {
+    public void testGetbyissueid() {
 //        UserDao dao = (UserDao)c.getBean("userDao");
-        List<EpmUser> users = dao.get("zhangsi@bainainfo.com");
-        for(EpmUser user : users) {
+        List<IssueField> users = dao.getbyissueid(1);
+        for (IssueField user : users) {
+            System.out.println(user);
+        }
+    }
+
+    @Test
+    public void testGetbyfieldid() {
+//        UserDao dao = (UserDao)c.getBean("userDao");
+        List<IssueField> users = dao.getbyfieldid(1);
+        for (IssueField user : users) {
             System.out.println(user);
         }
     }
@@ -52,12 +53,11 @@ public class UserTest {
     @Test
     public void testList() {
 //        UserDao dao = (UserDao)c.getBean("userDao");
-        List<EpmUser> users = dao.list(1, 10);
-        for(EpmUser user : users) {
+        List<IssueField> users = dao.list(1, 10);
+        for (IssueField user : users) {
             System.out.println(user);
         }
     }
-
     @Test
     public void testDelete() {
 //        UserDao dao = (UserDao)c.getBean("userDao");

@@ -7,5 +7,5 @@ public class Constant {
     /**
      * 数据库名称
      */
-    public static final String DB_CATALOG_EPM = "opt_debug";
+    public static final String DB_CATALOG_EPM = "epm";
 }

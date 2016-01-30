@@ -30,7 +30,7 @@
         </global-exception-mappings>
 
         <action name="login" class="com.epmeeting.action.LoginAction" method="login">
-            <result name="system_admin">/pages/admin/homepage.jsp</result>
+            <result name="system_admin">/pages/admin/homePage.jsp</result>
         </action>
     </package>
 </struts>

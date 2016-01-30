@@ -1,119 +1,69 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%@ page isELIgnored="false"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
     <head>
-        <meta charset="utf-8">
-        <link href="/css/admin/public.css" type="text/css" rel="stylesheet">
-        <link href="/css/admin/houtai.css" type="text/css" rel="stylesheet">
-        <link href="/css/admin/smartMenu.css" type="text/css" rel="stylesheet">
-        <title>EPMeeting-administator</title>
+        <title>系统管理员</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" /><!-- added by CSB 20151206-02 -->
+        <link href="/css/admin/homePage.css"  rel="stylesheet"  id="page">
+        <script type="text/javascript" src="/js/admin/allhomepage.js"></script>
     </head>
-    <body>
-    	<div id="admin">
-    		<div class="ad-menu" id="ad-menu">
-                <div class="ad-logo"><img src="/images/admin/m-logo.png" height="103" width="130"></div>
-                <div class="ad-list">
-                    <ul>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic1"></em>用户管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="/user/u_list.action" class="dd-item">查找用户<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="#" class="dd-item">新增用户<span class="scm dd-ar"></span></a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic2"></em>专家管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="#" class="dd-item">查找专家<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="#" class="dd-item">新增专家<span class="scm dd-ar"></span></a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic3"></em>会议管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="#" class="dd-item">查看会议<span class="scm dd-ar"></span></a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic4"></em>资料管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="#" class="dd-item">查找资料<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="#" class="dd-item">上传资料<span class="scm dd-ar"></span></a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic5"></em>个人设置<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="#" class="dd-item">修改密码<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="#" class="dd-item">个人信息<span class="scm dd-ar"></span></a>
-                                </dd>
-                            </dl>
-                        </li>
-                    </ul>
+
+<body onload="loadFun()">
+<s:form id="" action="//a.action">
+    <!-- 主页-->
+    <div id="page">
+        <!-- 上部 -->
+        <div id="tophead ">
+            <div id="topleft">
+                <img src="/images/admin/headTitle.png"
+                     style="z-index:999;">
+            </div>
+            <div id="topright">
+                <div class="topright_r">
+                    <strong>欢迎您，系统管理员</strong>&nbsp;&nbsp; <strong>
+                    日期：<span id="time">2016-01-30</span>
+						<span id="week">
+                    &nbsp;&nbsp;</strong>&nbsp;&nbsp;
+                    <a href="#"onclick="LogOff()" class="logOut">退出</a>
+                    <script type="text/javascript" language="javascript">
+                        function LogOff() {
+                            window.location.replace("/Account/LogOff");
+                            return false;
+                        }
+                    </script>
                 </div>
             </div>
-    		<div class="ad-comment-box" id="ad-comment">
-                <div class="ad-top-comment">
-                    <div class="ad-message">
-                        <div class="ad-top-right">
-                            <div class="ad-welcom">
-                                <div class="ad-wel-img"><img src="/images/admin/min_logo.png" height="36" width="36"></div>
-                                <div class="ad-wel-text">
-                                    <div class="font-wel">欢迎您！<strong>XXXXX</strong><a href="javascript:;"><strong>【退出】</strong></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ad-main-nav-box">
-                        <ul id="breadcrumbs-three">
-                            <li title="首页"><a href="javascript:;" class="dot">首页</a></li>
-                        </ul>
-                        <a href="javascript:;" class="scm jian-a J_mainLeft main-sel pre"></a>
-                        <div class="ad-main-wraper .J_menuItems">
-                            <ul class="ad-main-list" id="ad-main">
-                            </ul>
-                        </div>
-                        <a href="javascript:;" class="scm jian-a J_mainRight next"></a>
-                    </div>
-                    <div class="ad-sub-nav-box content-tabs">
-                        <div class="ad-sub-wraper page-tabs J_menuTabs">
-                            <ul class="ad-sub-list page-tabs-content">
-                                <li class="active J_menuTab" data-id="/pages/admin/index.html">首页</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="ad-main-comment J_mainContent" id="ad-iframe">
-                    <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="/pages/admin/index.html" frameborder="0" data-id="/pages/admin/index.html" seamless></iframe>
-                </div>
-    		</div>
-    	</div>
-        <script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="/js/admin/contabs.js"></script>
-        <script type="text/javascript" src="/js/admin/maintabs.js"></script>
-        <script type="text/javascript" src="/js/jquery/jquery-smartMenu-min.js"></script>
-        <script type="text/javascript" src="/js/jquery/jquery.nicescroll.min.js"></script>
-        <script type="text/javascript">
-            $(function(){
-                $(".ad-menu").niceScroll({cursorborder:"0 none",cursorcolor:"#1a1a19",cursoropacitymin:"0",boxzoom:false});
-            })
-        </script>
-    </body>
+        </div>
+        <!-- 中部 -->
+        <div id="center">
+            <!-- 左边菜单 -->
+            <div id="menu">
+                <table  onclick="change(t1,ts1)" id="ts1">
+                    <tr><td><ul ><li> <a  href="#" onclick="Show('window')" onFocus="this.blur()"><img src="/images/admin/m_users.png">用户管理</a> </li></ul></td>
+                    </tr>
+                </table>
+                <table id="t1" style="display:none">
+                    <tr>
+                        <td><ul id="window"><li ><a class="asideInputNone" onclick="changcss(this)" href="searchUsers.jsp" target="_mainFrame" onFocus="this.blur()"><img src="/images/admin/s_users.png">查找用户</a></li></ul></td>
+                    </tr>
+                    <tr>
+                        <td><ul id="window"><li ><a class="asideInputNone" onclick="changcss(this)" href="newUsers.jsp" target="_mainFrame" onFocus="this.blur()"><img src="/images/admin/n_users.png">新增用户</a></li></ul></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- 右边 -->
+            <div>
+                <iframe id="_mainFrame" name="_mainFrame" frameborder="0"
+                        src="welcome.jsp" scrolling="no"> </iframe>
+            </div>
+        </div>
+        <!-- 下部 -->
+        <div id="bottom">
+        </div>
+    </div>
+</s:form>
+</body>
 </html>

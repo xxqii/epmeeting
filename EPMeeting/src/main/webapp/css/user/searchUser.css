@@ -1,0 +1,138 @@
+@CHARSET"UTF-8";
+/* CSS Document */
+*{
+	padding:0;
+	margin:0;
+}
+#search{
+	height: 100%;
+	width: 100%;
+	margin: 0.1% 0.1% 0.3% 0.3%;
+	float: left;
+	background-color: #dce9f9;
+	
+}
+
+#midtop {
+	width:99%;
+	height:8%;
+	padding:5px 0px 0px 10px;
+	font-family: SimSun,arial,sans-serif;
+	font-size:120%;
+	font-weight:900;
+	background-color:#c2dcf1;
+}
+#midtop span{
+	
+}
+#midtop select{
+	width:10%;
+	height:65%;
+	font-family: SimSun,arial,sans-serif;
+	font-size:100%;
+}
+input{
+	
+}
+.text{
+	width:10%;
+	height:65%;
+	margin-left:10px;
+	font-family: SimSun,arial,sans-serif;
+	font-size:100%;
+}
+ .find{
+	text-align: center;
+     width:8%;
+	height:65%;
+font-size:80%;
+color: #fff;
+text-shadow:0.1% 0.1% 0.1% #ccc;
+border-color:#ccc;
+overflow: hidden;
+background-color:#006699;
+}
+#midcenter{
+	
+}
+#midcenter a{
+	text-decoration:none;
+	font-family: SimSun,arial,sans-serif;
+	font-size:100%;
+ }
+
+#midcenter table {
+	width: 99.9%;
+	height:40%;
+	font-family: SimSun,arial,sans-serif;
+	font-size:120%;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+	text-align:center;
+}
+#midcenter table th {
+	width:13%;
+	 background:#b5cfd2 url(../../sourse/images/cell-blue.jpg);
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #999999;
+}
+#midcenter table  td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #999999;
+}
+
+
+
+#midbottom {
+	width:100%;
+	height:12%;
+	background-color:#c2dcf1;
+	margin:0px;
+	text-align: center;
+}
+#midbottom input{
+	font-size:100%;
+	text-align: center;
+}
+.button{
+width:6%;
+height: 45%;
+text-align: center;
+font-weight: bold;
+font-size:100%;
+color: #fff;
+background-color:#006699;
+margin:1%;
+text-shadow:0.1% 0.1% 0.1% #0080ff;
+border-color:#09316c;
+border-radius: 5px;
+overflow: hidden;
+}
+.page{
+	width:4%;
+height: 45%;
+text-align: center;
+font-weight: bold;
+font-size:100%;
+color: #333333;
+margin:1%;
+overflow: hidden;
+}
+
+#midbottom a{
+	font-size:120%;
+	margin:2px;
+	font-weight:bold;
+}
+
+
+
+
+
+

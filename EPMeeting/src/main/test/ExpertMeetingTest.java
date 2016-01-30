@@ -1,5 +1,5 @@
-import com.epmeeting.dao.UserDao;
-import com.epmeeting.module.EpmUser;
+import com.epmeeting.dao.ExpertMeetingDao;
+import com.epmeeting.module.ExpertMeeting;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -10,51 +10,48 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
- * Created by chqi on 2016/1/27.
+ * Created by 张宏浩 on 2016/1/29.
  */
-public class UserTest {
-    UserDao dao;
+public class ExpertMeetingTest {
+    ExpertMeetingDao dao;
     @Before
     public void before() {
         ApplicationContext c = new ClassPathXmlApplicationContext("spring.xml");
-        dao = (UserDao)c.getBean("userDao");
+        dao = (ExpertMeetingDao)c.getBean("expertMeetingDao");
     }
-
     @Test
     public void testAdd() {
 //        UserDao dao = (UserDao)c.getBean("userDao");
         System.out.println(dao.getClass().getCanonicalName());
-        EpmUser user = new EpmUser();
-        user.setUserType((short)1);
-        user.setUserName("zhangsi@bainainfo.com");
-        user.setRoleIds("1,");
-        user.setRealName("张思");
-        user.setAvatar("http://img1.imgtn.bdimg.com/it/u=363281080,427001469&fm=21&gp=0.jpg");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddd");
+        ExpertMeeting expertMeeting = new ExpertMeeting();
+        expertMeeting.setExpertId("0001");
+        expertMeeting.setMeetingId(4);
+        expertMeeting.setOperatorName("张宏浩");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ddd hh时mm分ss秒");
         try {
-            user.setBirthday(sdf.parse("1985-03-12"));
+            expertMeeting.setOperateTime(sdf.parse("1985-03-12 18时05分32秒"));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        user.setPasswdMd5("asdfg");
-        int result = dao.add(user);
-        System.out.println("save user finished, result = " + result);
+        int result = dao.add(expertMeeting);
+        System.out.println("save expertMeeting finished, result = " + result);
     }
+
     @Test
     public void testGet() {
 //        UserDao dao = (UserDao)c.getBean("userDao");
-        List<EpmUser> users = dao.get("zhangsi@bainainfo.com");
-        for(EpmUser user : users) {
-            System.out.println(user);
+        List<ExpertMeeting> expertMeetings = dao.get("0001");
+        for(ExpertMeeting expertMeeting : expertMeetings) {
+            System.out.println(expertMeeting);
         }
     }
 
     @Test
     public void testList() {
 //        UserDao dao = (UserDao)c.getBean("userDao");
-        List<EpmUser> users = dao.list(1, 10);
-        for(EpmUser user : users) {
-            System.out.println(user);
+        List<ExpertMeeting> expertMeetings = dao.list(1, 10);
+        for(ExpertMeeting expertMeeting : expertMeetings) {
+            System.out.println(expertMeeting);
         }
     }
 

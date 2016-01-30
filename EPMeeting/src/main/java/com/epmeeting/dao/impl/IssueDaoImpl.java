@@ -1,45 +1,42 @@
 package com.epmeeting.dao.impl;
 
-import com.epmeeting.dao.UserDao;
+import com.epmeeting.dao.IssueDao;
+import com.epmeeting.module.EpmIssue;
 import com.epmeeting.module.EpmUser;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created by chqi on 2016/1/27.
- */
-@Component("userDao")
-public class UserDaoImpl implements UserDao {
+@Component("issueDao")
+public class IssueDaoImpl implements IssueDao {
 
     @Autowired
     private SessionFactory sessionFactory;
 
-    @Override
-    public int add(EpmUser user) {
+    @Override                   //从父类继承的方法需要重写
+    public int add(EpmIssue user) {
         return (Integer)sessionFactory.openSession().save(user);
     }
 
     @Override
-    public List<EpmUser> get(String username) {
-        Query query = sessionFactory.openSession().createQuery("from EpmUser as u where u.userName=:username order by id desc").setString("username", username);
+    public List<EpmIssue> get(String username) {
+        Query query = sessionFactory.openSession().createQuery("from EpmIssue as u where u.issue_name=:username order by id desc").setString("username", username);
         return query.list();
     }
 
     @Override
-    public List<EpmUser> list(int index, int limit) {
-        Query query = sessionFactory.openSession().createQuery("from EpmUser order by id desc");
+    public List<EpmIssue> list(int index, int limit) {
+        Query query = sessionFactory.openSession().createQuery("from EpmIssue order by id desc");
         query.setFirstResult((index-1)*limit).setMaxResults(limit);
         return query.list();
     }
 
     @Override
     public int delete(int id) {
-        Query query = sessionFactory.openSession().createQuery("delete from EpmUser as u where u.id=:id").setInteger("id", id);
+        Query query = sessionFactory.openSession().createQuery("delete from EpmIssue as u where u.id=:id").setInteger("id", id);
         return query.executeUpdate();
     }
 
