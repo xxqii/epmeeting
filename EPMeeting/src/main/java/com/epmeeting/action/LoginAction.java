@@ -1,20 +1,19 @@
 package com.epmeeting.action;
 
 import com.epmeeting.module.EpmUser;
-import com.epmeeting.module.Result;
 import com.epmeeting.service.UserService;
+import com.epmeeting.utils.MD5Utils;
+import com.epmeeting.utils.ResultCode;
 import com.epmeeting.utils.UserType;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.commons.lang.StringUtils;
-import org.apache.cxf.transport.Session;
+import org.apache.struts2.ServletActionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.Cookie;
 
 /**
  * 控制用户登录
@@ -23,9 +22,9 @@ import java.util.Map;
 @Controller
 public class LoginAction extends ActionSupport {
     private Logger logger = LoggerFactory.getLogger(LoginAction.class);
-    private EpmUser user;
 
-    private Result result;
+    private EpmUser user;
+    private ResultCode resultCode;
 
     @Autowired
     private UserService userService;
@@ -37,33 +36,34 @@ public class LoginAction extends ActionSupport {
      * @throws Exception
      */
     public String login() {
-        logger.info("LoginAction : username=" + user.getUserName() + ", passwd=" + user.getPasswdMd5());
-        if(result == null) {
-            result = new Result();
+        if(resultCode == null) {
+            resultCode = new ResultCode();
         }
 
         //用户名为空
-        if(user == null || StringUtils.isBlank(user.getUserName()) || StringUtils.isBlank(user.getPasswdMd5())) {
-            result.setMessage("用户名和密码不能为空");
+        if(user == null || StringUtils.isBlank(user.getEmail()) || StringUtils.isBlank(user.getPasswdMd5())) {
+            resultCode.setMessage("用户名或密码不能为空");
             return this.LOGIN;
         }
-        List<EpmUser> users = userService.get(user.getUserName());
-        if(users != null && users.size() == 1) {
-            EpmUser _user = users.get(0);
-            if(_user.getPasswdMd5().equals(user.getPasswdMd5())) {
-                //登录成功，标记session
-                Map<String, Object> session = ActionContext.getContext().getSession();
-                logger.info("LoginAction:success:" + _user.getUserName(), _user.getUserType());
-                session.put(_user.getUserName(), _user.getUserType());
-                UserType userType = UserType.get(_user.getUserType());
-                switch(userType) {
-                    case SYSTEM_ADMIN: return "system_admin";  //超级管理员首页
-                    default: return this.LOGIN;
-                }
-            }
+        String email = user.getEmail().trim();
+        String passwordMd5 = MD5Utils.encrypt(user.getPasswdMd5().trim());
+
+        user = userService.get(email);
+        if(user == null) {
+            resultCode.setMessage("用户名或密码错误");
+            return this.LOGIN;
         }
-        result.setMessage("用户名或者密码不正确");
-        return this.LOGIN;
+
+        if(!passwordMd5.equals(user.getPasswdMd5())) {
+            resultCode.setMessage("用户名或密码错误");
+            return this.LOGIN;
+        } else {    //登录成功
+            ServletActionContext.getRequest().getSession().setAttribute(passwordMd5, user);
+            Cookie cookie = new Cookie("token", passwordMd5);
+            ServletActionContext.getResponse().addCookie(cookie);   //将token放入cookie返回页面
+            logger.info("Login:Success: " + email);
+            return this.SUCCESS;
+        }
     }
 
     /**
@@ -89,13 +89,5 @@ public class LoginAction extends ActionSupport {
 
     public void setUserService(UserService userService) {
         this.userService = userService;
-    }
-
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
     }
 }

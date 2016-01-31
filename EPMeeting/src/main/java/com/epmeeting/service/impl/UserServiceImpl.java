@@ -3,10 +3,13 @@ package com.epmeeting.service.impl;
 import com.epmeeting.dao.UserDao;
 import com.epmeeting.module.EpmUser;
 import com.epmeeting.service.UserService;
+import com.epmeeting.utils.Page;
 import org.apache.commons.lang.StringUtils;
+import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -20,16 +23,56 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int add(EpmUser user) {
-        return userDao.add(user);
+        try {
+            return userDao.add(user);
+        } catch (Exception e) {
+            logger.error("UserServiceImpl.add error ,", e);
+            return 0;
+        }
     }
 
     @Override
-    public List<EpmUser> get(String username) {
-        if(StringUtils.isBlank(username)) {
+    public EpmUser get(String email) {
+        if(StringUtils.isBlank(email)) {
             return null;
         }
-        logger.info("UserServiceImpl.get " + username);
-        return userDao.get(username);
+        try{
+            return userDao.get(email);
+        } catch(Exception e) {
+            logger.error("UserServiceImpl.get error, ", e);
+            return null;
+        }
+    }
+
+    @Override
+    public List<EpmUser> list(EpmUser user, Page page) {
+        String email = null;
+        String realName = null;
+        int userType = -1;
+        String creator = null;
+        if(user != null) {
+            email = user.getEmail();
+            userType = user.getUserType();
+            realName = user.getRealName();
+            creator = user.getCreator();
+        }
+        try {
+            int totalCount = userDao.count(email, realName, userType, creator);
+            if(totalCount > 0) {
+                page.setTotalCount(totalCount);
+                int pageCount = totalCount/page.getPageSize();
+                if(totalCount % page.getPageSize() != 0) {
+                    ++pageCount;
+                }
+                page.setTotalPageCount(pageCount);
+                return userDao.list(email, realName, userType, creator, page);
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
+            logger.error("UserServiceImpl.list : error" , e);
+            return null;
+        }
     }
 
     public UserDao getUserDao() {

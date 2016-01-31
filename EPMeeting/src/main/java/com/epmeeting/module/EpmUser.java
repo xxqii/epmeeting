@@ -25,10 +25,10 @@ public class EpmUser implements Serializable {
     @Column(name = "user_type")
     private short userType;
     /**
-     * 用户登录名
+     * 用户登录名：邮箱
      */
-    @Column(name = "user_name")
-    private String userName;
+    @Column(name = "user_email")
+    private String email;
     /**
      * 登录密码，注：db中存放md5
      */
@@ -45,16 +45,48 @@ public class EpmUser implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "birthday")
     private Date birthday;
+
+    /**
+     * 手机号码
+     */
+    @Column(name = "mobile")
+    private String mobile;
+
+    /**
+     * 固定电话
+     */
+    @Column(name = "telphone")
+    private String telphone;
+
+    /**
+     * QQ号码
+     */
+    @Column(name = "qq")
+    private String qq;
+
     /**
      * 图像url连接
      */
     @Column(name = "avatar")
     private String avatar;
+
     /**
-     * 用户拥有的角色id列表，多个id之间用','分隔，eg：1,2,3,
+     * 工作单位
      */
-    @Column(name = "role_ids")
-    private String roleIds;
+    @Column(name="workunit")
+    private String workunit;
+
+    /**
+     * 添加时间
+     */
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="create_time")
+    private Date createTime;
+    /**
+     * 添加者
+     */
+    @Column(name="creator")
+    private String creator;
 
     public int getId() {
         return id;
@@ -70,14 +102,6 @@ public class EpmUser implements Serializable {
 
     public void setUserType(short userType) {
         this.userType = userType;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getPasswdMd5() {
@@ -112,17 +136,65 @@ public class EpmUser implements Serializable {
         this.avatar = avatar;
     }
 
-    public String getRoleIds() {
-        return roleIds;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setRoleIds(String roleIds) {
-        this.roleIds = roleIds;
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getTelphone() {
+        return telphone;
+    }
+
+    public void setTelphone(String telphone) {
+        this.telphone = telphone;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getWorkunit() {
+        return workunit;
+    }
+
+    public void setWorkunit(String workunit) {
+        this.workunit = workunit;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("id=").append(this.getId()).append(",name=").append(this.getUserName());
+        sb.append("id=").append(this.getId()).append(",name=").append(this.getEmail());
         return sb.toString();
     }
 }

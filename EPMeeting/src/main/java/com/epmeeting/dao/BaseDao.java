@@ -1,26 +1,20 @@
 package com.epmeeting.dao;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Created by chqi on 2016/1/26.
+ * Created by chqi on 2016/1/31.
  */
 public class BaseDao {
-    @Resource
+    @Autowired
     private SessionFactory sessionFactory;
 
     public SessionFactory getSessionFactory() {
-        return sessionFactory;//返回session工厂
+        return sessionFactory;
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
-    }
-    public Session getSession(){
-        Session session=sessionFactory.getCurrentSession();
-        return session;
     }
 }

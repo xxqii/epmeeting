@@ -1,6 +1,5 @@
 import com.epmeeting.dao.TextDao;
 import com.epmeeting.module.EpmText;
-import com.epmeeting.module.EpmUserInfo;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

@@ -42,21 +42,6 @@ body a,form li,input[type="submit"],input[type="text"],.sixth-login input[type="
 	-moz-transition: 0.1s all;
 	-o-transition: 0.1s all;
 }
-/*--close--*/
-.close{
-background: url('../../images/login/close.png') no-repeat 0px 0px;
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  -webkit-transition: color 0.2s ease-in-out;
-  -moz-transition: color 0.2s ease-in-out;
-  -o-transition: color 0.2s ease-in-out;
-  transition: color 0.2s ease-in-out;
-}
-/*--/close--*/
 h1 {
 	font-family: 'Exo 2', sans-serif;
 	  text-align: center;

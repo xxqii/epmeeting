@@ -22,7 +22,7 @@
         <default-interceptor-ref name="loginCheck"></default-interceptor-ref>
         <global-results>
             <result name="error">/error.jsp</result>
-            <result name="login">/login.jsp</result>
+            <result name="login" type="redirect">/login.jsp</result>
         </global-results>
 
         <global-exception-mappings>
@@ -30,7 +30,7 @@
         </global-exception-mappings>
 
         <action name="login" class="com.epmeeting.action.LoginAction" method="login">
-            <result name="system_admin">/pages/admin/homePage.jsp</result>
+            <result name="success" type="redirect">/user/homepage.action</result> <!--跳转到系统管理员首页-->
         </action>
     </package>
 </struts>

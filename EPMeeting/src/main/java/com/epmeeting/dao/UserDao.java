@@ -1,6 +1,7 @@
 package com.epmeeting.dao;
 
 import com.epmeeting.module.EpmUser;
+import com.epmeeting.utils.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,18 +22,27 @@ public interface UserDao {
 
     /**
      * 根据用户名查找用户
-     * @param username
+     * @param email
      * @return
      */
-    public List<EpmUser> get(String username);
+    public EpmUser get(String email);
 
     /**
      * 用户列表
-     * @param index : 第几页
-     * @param limit : 每页显示数目
      * @return
      */
-    public List<EpmUser> list(int index, int limit);
+    public List<EpmUser> list(String emial, String realName, int userType, String creator, Page page);
+
+    /**
+     * 查找记录的条数
+     *
+     * @param emial
+     * @param realName
+     * @param userType
+     * @param creator
+     * @return
+     */
+    public int count(String emial, String realName, int userType, String creator);
 
     /**
      * 删除用户
