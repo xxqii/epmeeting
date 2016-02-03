@@ -20,7 +20,7 @@ public class Page {
     /**
      * 每页记录数,默认每页显示30条记录
      */
-    private int pageSize = 30;
+    private int pageSize = 10;
 
     public int getTotalCount() {
         return totalCount;
