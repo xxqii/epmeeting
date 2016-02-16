@@ -1,6 +1,7 @@
 package com.epmeeting.dao;
 
 import com.epmeeting.module.EpmMaterial;
+import com.epmeeting.utils.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,19 +20,16 @@ public interface MaterialDao {
     public int add(EpmMaterial material);
 
     /**
-     * 根据资料Id查找资料
-     * @param materialId
+     * 资料列表
      * @return
      */
-    public List<EpmMaterial> get(String materialId);
+    public List<EpmMaterial> list(Page page);
 
     /**
-     * 资料列表
-     * @param index : 第几页
-     * @param limit : 每页显示数目
+     * 得到总记录数目
      * @return
      */
-    public List<EpmMaterial> list(int index, int limit);
+    public int count();
 
     /**
      * 删除资料

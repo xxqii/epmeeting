@@ -10,6 +10,7 @@
 
     <!-- 加载struts2配置文件 -->
     <include file="./action/user-action.xml" />
+    <include file="./action/material-action.xml" />
 
     <package name="struts2" extends="struts-default,json-default" namespace="/">
         <interceptors>

@@ -4,8 +4,10 @@ import com.epmeeting.utils.Constant;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
+ * 资料
  * Created by zhy on 2016/1/29.
  */
 @Entity
@@ -18,25 +20,41 @@ public class EpmMaterial implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
+
     /**
-     * 会议ID
+     * 文件名
      */
-    @Column(name = "meeting_id")
-    private int meetingId;
+    private String filename;
     /**
-
-     * 资料ID
+     * 文件大小
      */
-    @Column(name = "material_id")
-    private int materialId;
+    private long size;
+    /**
+     * 资料类型； 1：word文档；2：PPT；3：视频；4：音频；5：图片；0：其它类型
+     */
+    private short type;
 
-    public int getMaterialId() {
-        return materialId;
-    }
+    /**
+     * 关键字，多个关键字之间用‘,’分隔
+     */
+    private String keyword;
 
-    public void setMaterialId(int materialId) {
-        this.materialId = materialId;
-    }
+    /**
+     * 备注
+     */
+    private String note;
+
+    /**
+     * 添加时间
+     */
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="create_time")
+    private Date createTime;
+
+    /**
+     * 添加者
+     */
+    private String creator;
 
     public int getId() {
         return id;
@@ -46,20 +64,59 @@ public class EpmMaterial implements Serializable {
         this.id = id;
     }
 
-    public int getMeetingId() {
-        return meetingId;
+    public String getFilename() {
+        return filename;
     }
 
-    public void setMeetingId(int meetingId) {
-        this.meetingId = meetingId;
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
-    @Override
-    public String toString() {
-        return "EpmMaterial{" +
-                "id=" + id +
-                ", meetingId=" + meetingId +
-                ", materialId=" + materialId +
-                '}';
+    public short getType() {
+        return type;
+    }
+
+    public void setType(short type) {
+        this.type = type;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public long getSize() {
+        return size;
+    }
+
+    public void setSize(long size) {
+        this.size = size;
     }
 }

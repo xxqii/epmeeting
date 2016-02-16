@@ -2,6 +2,7 @@ package com.epmeeting.dao.impl;
 
 import com.epmeeting.dao.MaterialDao;
 import com.epmeeting.module.EpmMaterial;
+import com.epmeeting.utils.Page;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +25,20 @@ public class MaterialDaoImpl implements MaterialDao {
     }
 
     @Override
-    public List<EpmMaterial> get(String materialId) {
-        Query query = sessionFactory.openSession().createQuery("from EpmMaterial as em where em.materialId=:materialId order by id desc").setString("materialId", materialId);
+    public List<EpmMaterial> list(Page page) {
+        StringBuilder sb = new StringBuilder("from EpmMaterial as m ");
+        sb.append(" order by m.id desc");
+
+        Query query = this.getSessionFactory().openSession().createQuery(sb.toString());
+        query.setFirstResult((page.getPage()-1)*page.getPageSize()).setMaxResults(page.getPageSize());
         return query.list();
     }
 
     @Override
-    public List<EpmMaterial> list(int index, int limit) {
-        Query query = sessionFactory.openSession().createQuery("from EpmMaterial order by id desc");
-        query.setFirstResult((index-1)*limit).setMaxResults(limit);
-        return query.list();
+    public int count() {
+        StringBuilder sb = new StringBuilder("select count(1) from EpmMaterial as m ");
+        Query query = this.getSessionFactory().openSession().createQuery(sb.toString());
+        return Integer.valueOf(query.uniqueResult().toString());
     }
 
     @Override

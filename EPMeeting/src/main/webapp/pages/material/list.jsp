@@ -9,7 +9,7 @@
     <link href="/css/admin/smartMenu.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.css" />
     <link rel="stylesheet" href="/css/user/add.css" />
-    <title>系统管理员【添加用户】</title>
+    <title>系统管理员【查找资料】</title>
 </head>
 <body>
 <div id="admin">
@@ -29,54 +29,48 @@
             <div class="ad-sub-nav-box content-tabs">
                 <div class="ad-sub-wraper page-tabs J_menuTabs">
                     <ul class="ad-sub-list page-tabs-content">
-                        <li class="active J_menuTab">查找用户</li>
+                        <li class="active J_menuTab">查找资料</li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="ad-main-comment J_mainContent" id="ad-iframe" style=" min-height: 600px;">
-            <!--用户列表-->
+            <!--资料列表-->
             <div class="right_cont">
                 <table class="table table-bordered table-striped table-hover">
                     <tbody>
                     <tr align="center">
-                        <td nowrap="nowrap"><strong>姓名</strong></td>
-                        <td nowrap="nowrap"><strong>邮箱</strong></td>
-                        <td nowrap="nowrap"><strong>电话</strong></td>
-                        <td nowrap="nowrap"><strong>QQ号码</strong></td>
-                        <td><strong>用户类型</strong></td>
-                        <td><strong>单位地址</strong></td>
+                        <td nowrap="nowrap"><strong>文件名</strong></td>
+                        <td nowrap="nowrap"><strong>类型</strong></td>
+                        <td nowrap="nowrap"><strong>大小</strong></td>
                         <td><strong>创建时间</strong></td>
                         <td><strong>添加者</strong></td>
                         <td width="80" nowrap="nowrap"><strong> 操作 </strong></td>
                     </tr>
-                    <c:forEach items="${users}" var="item" varStatus="i">
+                    <c:forEach items="${materialList}" var="item" varStatus="i">
                         <tr align="center">
-                            <td nowrap="nowrap">${item.realName}</td>
-                            <td nowrap="nowrap">${item.email}</td>
-                            <td nowrap="nowrap">${item.mobile}</td>
-                            <td nowrap="nowrap">${item.qq}</td>
+                            <td nowrap="nowrap"><a href="#" title="预览">${item.filename}</a></td>
                             <td nowrap="nowrap">
                                 <c:choose>
-                                    <c:when test="${item.userType == 0}">系统管理员</c:when>
-                                    <c:when test="${item.userType == 1}">会议控制员</c:when>
-                                    <c:when test="${item.userType == 2}">会议记录员</c:when>
-                                    <c:when test="${item.userType == 3}">高级用户</c:when>
-                                    <c:when test="${item.userType == 4}">音视频记录人员</c:when>
-                                    <c:when test="${item.userType == 5}">会议管理员</c:when>
+                                    <c:when test="${item.type== 0}">其它类型</c:when>
+                                    <c:when test="${item.type== 1}">word文档</c:when>
+                                    <c:when test="${item.type== 2}">PPT</c:when>
+                                    <c:when test="${item.type== 3}">视频</c:when>
+                                    <c:when test="${item.type== 4}">音频</c:when>
+                                    <c:when test="${item.type== 5}">图片</c:when>
                                 </c:choose>
                             </td>
-                            <td nowrap="nowrap">${item.workunit}</td>
+                            <td nowrap="nowrap">0</td>
                             <td nowrap="nowrap">${item.createTime}</td>
                             <td nowrap="nowrap">${item.creator}</td>
-                            <td nowrap="nowrap"><a href="#">删除</a> <a href="#">编辑</a></td>
+                            <td nowrap="nowrap"><a href="#">删除</a> <a href="#">预览</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
                 <jsp:include page="/pages/common/page.jsp"/>
             </div>
-            <!--用户列表-->
+            <!--资料列表-->
         </div>
     </div>
 </div>

@@ -12,65 +12,7 @@
     </head>
     <body>
     	<div id="admin">
-    		<div class="ad-menu" id="ad-menu">
-                <div class="ad-logo"><img src="/images/admin/m-logo.png" height="103" width="130"></div>
-                <div class="ad-list">
-                    <ul>
-                        <li class="over">
-                            <div class="li-item"><em class="scm li-ico ic1"></em>用户管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="/user/u_list.action" class="dd-item">查找用户<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd class="on">
-                                    <a href="/user/u_addui.action" class="dd-item">新增用户<span class="scm dd-ar"></span></a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic2"></em>专家管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="#" class="dd-item">查找专家<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="#" class="dd-item">新增专家<span class="scm dd-ar"></span></a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic3"></em>会议管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="#" class="dd-item">查看会议<span class="scm dd-ar"></span></a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic4"></em>资料管理<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="#" class="dd-item">查找资料<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="#" class="dd-item">上传资料<span class="scm dd-ar"></span></a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <div class="li-item"><em class="scm li-ico ic5"></em>个人设置<span class="scm arrow"></span></div>
-                            <dl>
-                                <dd>
-                                    <a href="#" class="dd-item">修改密码<span class="scm dd-ar"></span></a>
-                                </dd>
-                                <dd>
-                                    <a href="#" class="dd-item">个人信息<span class="scm dd-ar"></span></a>
-                                </dd>
-                            </dl>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <jsp:include page="../common/menu.jsp"/>
     		<div class="ad-comment-box" id="ad-comment">
                 <div class="ad-top-comment">
                     <div class="ad-message">

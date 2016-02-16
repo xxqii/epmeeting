@@ -102,7 +102,6 @@ public class UserAction extends ActionSupport {
      * @return
      */
     public String list() {
-        logger.info("UserAction.list");
         if(page == null) {
             page = new Page();
         }
