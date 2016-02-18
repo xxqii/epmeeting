@@ -44,6 +44,7 @@
                         <td nowrap="nowrap"><strong>邮箱</strong></td>
                         <td nowrap="nowrap"><strong>电话</strong></td>
                         <td nowrap="nowrap"><strong>QQ号码</strong></td>
+                        <td nowrap="nowrap"><strong>生日</strong></td>
                         <td><strong>用户类型</strong></td>
                         <td><strong>单位地址</strong></td>
                         <td><strong>创建时间</strong></td>
@@ -52,10 +53,11 @@
                     </tr>
                     <c:forEach items="${users}" var="item" varStatus="i">
                         <tr align="center">
-                            <td nowrap="nowrap">${item.realName}</td>
+                            <td nowrap="nowrap"><a href="/user/u_editui.action?user.id=${item.id}">${item.realName}</a></td>
                             <td nowrap="nowrap">${item.email}</td>
                             <td nowrap="nowrap">${item.mobile}</td>
                             <td nowrap="nowrap">${item.qq}</td>
+                            <td nowrap="nowrap">${item.birthday}</td>
                             <td nowrap="nowrap">
                                 <c:choose>
                                     <c:when test="${item.userType == 0}">系统管理员</c:when>
@@ -69,7 +71,7 @@
                             <td nowrap="nowrap">${item.workunit}</td>
                             <td nowrap="nowrap">${item.createTime}</td>
                             <td nowrap="nowrap">${item.creator}</td>
-                            <td nowrap="nowrap"><a href="#">删除</a> <a href="#">编辑</a></td>
+                            <td nowrap="nowrap"><a href="/user/u_delete.action?user.id=${item.id}" onclick="javascript:return confirm('是否要删除该记录？')">删除</a> <a href="/user/u_editui.action?user.id=${item.id}">编辑</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

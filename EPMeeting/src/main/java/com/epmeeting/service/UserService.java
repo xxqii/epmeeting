@@ -17,5 +17,11 @@ public interface UserService {
 
     public EpmUser get(String email);
 
+    public EpmUser get(int id);
+
+    public void update(EpmUser user);
+
     public List<EpmUser> list(EpmUser user, Page page);
+
+    public int delete(int id);
 }

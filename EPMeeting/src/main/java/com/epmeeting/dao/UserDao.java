@@ -28,6 +28,20 @@ public interface UserDao {
     public EpmUser get(String email);
 
     /**
+     * 根据主键查找用户
+     * @param id
+     * @return
+     */
+    public EpmUser get(int id);
+
+    /**
+     * 更新用户
+     * @param user
+     * @return
+     */
+    public void update(EpmUser user);
+
+    /**
      * 用户列表
      * @return
      */

@@ -46,6 +46,10 @@
                 <prop key="hibernate.cache.use_structured_entries">true</prop>
                 <prop key="hibernate.cache.use_second_level_cache">false</prop>
                 <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.EhCacheRegionFactory</prop>
+                <!--
+                <prop key="hibernate.current_session_context_class">thread</prop>
+                <prop key="hibernate.transaction.manager_lookup_class">org.springframework.orm.hibernate3.LocalTransactionManagerLookup</prop>
+                -->
             </props>
         </property>
     </bean>

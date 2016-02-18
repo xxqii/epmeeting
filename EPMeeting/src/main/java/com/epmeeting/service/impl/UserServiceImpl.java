@@ -45,6 +45,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public EpmUser get(int id) {
+        if(id <= 0 ) {
+            return null;
+        }
+        return userDao.get(id);
+    }
+
+    @Override
+    public void update(EpmUser user) {
+        if(user == null) {
+            return;
+        }
+        userDao.update(user);
+    }
+
+    @Override
     public List<EpmUser> list(EpmUser user, Page page) {
         String email = null;
         String realName = null;
@@ -73,6 +89,11 @@ public class UserServiceImpl implements UserService {
             logger.error("UserServiceImpl.list : error" , e);
             return null;
         }
+    }
+
+    @Override
+    public int delete(int id) {
+        return userDao.delete(id);
     }
 
     public UserDao getUserDao() {

@@ -109,6 +109,53 @@ public class UserAction extends ActionSupport {
         return "list";
     }
 
+    /**
+     * 编辑用户
+     * @return
+     */
+    public String editui() {
+        if(user == null || user.getId() <= 0) {
+            return this.SUCCESS;
+        }
+        int id = user.getId();
+        user = userService.get(id);
+        return "editui";
+    }
+
+    public String edit() {
+        if(resultCode == null) {
+            resultCode = new ResultCode();
+        }
+
+        if(StringUtils.isBlank(user.getRealName())) {
+            resultCode.setMessage("用户姓名不能为空");
+            return null;
+        }
+        if(StringUtils.isBlank(user.getEmail())) {
+            resultCode.setMessage("用户邮箱不能为空");
+            return null;
+        }
+        //判断用户名是否使用
+        EpmUser tmp = userService.get(user.getEmail());
+        if(tmp != null && tmp.getId() != user.getId()) {
+            resultCode.setMessage("此用户名已被使用");
+            return null;
+        }
+        user.setCreateTime(new Date());
+        user.setCreator((String)ServletActionContext.getRequest().getAttribute("__current_username__"));
+        userService.update(user);
+        return this.SUCCESS;
+    }
+
+    /**
+     * 删除用户
+     * @return
+     */
+    public String delete(){
+        userService.delete(user.getId());
+        return this.SUCCESS;
+    }
+
     public EpmUser getUser() {
         return user;
     }
