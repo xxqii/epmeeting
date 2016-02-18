@@ -35,6 +35,12 @@
             </div>
         </div>
         <div class="ad-main-comment J_mainContent" id="ad-iframe" style=" min-height: 600px;">
+            <div style="width:100%;text-align: center; padding-top: 15px">
+                <form action="/user/u_list.action" method="get" style="margin: 0;">
+                    <input type="text" name="keyword" value="${keyword}" style="width:300px" placeholder="请输入关键字">
+                    <input type="submit" value="查找" class="btn btn-info " style="width:80px;">
+                </form>
+            </div>
             <!--用户列表-->
             <div class="right_cont">
                 <table class="table table-bordered table-striped table-hover">

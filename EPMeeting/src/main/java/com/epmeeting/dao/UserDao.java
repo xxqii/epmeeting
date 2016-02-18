@@ -45,18 +45,14 @@ public interface UserDao {
      * 用户列表
      * @return
      */
-    public List<EpmUser> list(String emial, String realName, int userType, String creator, Page page);
+    public List<EpmUser> list(Page page, String keyword);
 
     /**
      * 查找记录的条数
      *
-     * @param emial
-     * @param realName
-     * @param userType
-     * @param creator
      * @return
      */
-    public int count(String emial, String realName, int userType, String creator);
+    public int count(String keyword);
 
     /**
      * 删除用户

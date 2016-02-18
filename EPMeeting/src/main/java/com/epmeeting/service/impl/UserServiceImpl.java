@@ -61,19 +61,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<EpmUser> list(EpmUser user, Page page) {
-        String email = null;
-        String realName = null;
-        int userType = -1;
-        String creator = null;
-        if(user != null) {
-            email = user.getEmail();
-            userType = user.getUserType();
-            realName = user.getRealName();
-            creator = user.getCreator();
-        }
+    public List<EpmUser> list(Page page, String keyword) {
         try {
-            int totalCount = userDao.count(email, realName, userType, creator);
+            int totalCount = userDao.count(keyword);
             if(totalCount > 0) {
                 page.setTotalCount(totalCount);
                 int pageCount = totalCount/page.getPageSize();
@@ -81,7 +71,7 @@ public class UserServiceImpl implements UserService {
                     ++pageCount;
                 }
                 page.setTotalPageCount(pageCount);
-                return userDao.list(email, realName, userType, creator, page);
+                return userDao.list(page, keyword);
             } else {
                 return null;
             }

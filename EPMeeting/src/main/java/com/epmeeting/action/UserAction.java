@@ -29,6 +29,8 @@ public class UserAction extends ActionSupport {
     private EpmUser user;
     private List<EpmUser> users;
     private ResultCode resultCode;
+    //查找关键字
+    private String keyword;
 
     @Autowired
     private UserService userService;
@@ -105,7 +107,7 @@ public class UserAction extends ActionSupport {
         if(page == null) {
             page = new Page();
         }
-        users = userService.list(user, page);
+        users = userService.list( page, keyword);
         return "list";
     }
 
@@ -194,5 +196,13 @@ public class UserAction extends ActionSupport {
 
     public void setUsers(List<EpmUser> users) {
         this.users = users;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 }

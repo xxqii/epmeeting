@@ -21,7 +21,7 @@ public interface UserService {
 
     public void update(EpmUser user);
 
-    public List<EpmUser> list(EpmUser user, Page page);
+    public List<EpmUser> list(Page page, String keyword);
 
     public int delete(int id);
 }

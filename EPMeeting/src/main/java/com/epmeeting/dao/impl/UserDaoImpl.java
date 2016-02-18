@@ -56,16 +56,10 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public List<EpmUser> list(String emial, String realName, int userType, String creator, Page page) {
+    public List<EpmUser> list(Page page, String keyword) {
         StringBuilder sb = new StringBuilder("from EpmUser as u ");
-        if(StringUtils.isNotBlank(emial)) {
-            sb.append(" where u.email like '%"+emial+"%'");
-        } else if(StringUtils.isNotBlank(realName)) {
-            sb.append(" where u.realName like '%"+realName+"%'");
-        } else if(userType >= 0 && userType < 6) {
-            sb.append(" where u.userType="+userType);
-        } else if(StringUtils.isNotBlank(creator)) {
-            sb.append(" where u.creator like '%"+creator+"%'");
+        if(StringUtils.isNotBlank(keyword)) {
+            sb.append(" where u.email like '%"+keyword+"%' or u.realName like '%"+keyword+"%' or u.mobile like '%" + keyword + "%' or u.creator like '%"+keyword+"%'");
         }
         sb.append(" order by u.id desc");
 
@@ -78,16 +72,10 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     }
 
     @Override
-    public int count(String emial, String realName, int userType, String creator) {
+    public int count(String keyword) {
         StringBuilder sb = new StringBuilder("select count(1) from EpmUser as u ");
-        if(StringUtils.isNotBlank(emial)) {
-            sb.append(" where u.email like '%"+emial+"%'");
-        } else if(StringUtils.isNotBlank(realName)) {
-            sb.append(" where u.realName like '%"+realName+"%'");
-        } else if(userType >= 0 && userType < 6) {
-            sb.append(" where u.userType="+userType);
-        } else if(StringUtils.isNotBlank(creator)) {
-            sb.append(" where u.creator like '%"+creator+"%'");
+        if(StringUtils.isNotBlank(keyword)) {
+            sb.append(" where u.email like '%"+keyword+"%' or u.realName like '%"+keyword+"%' or u.mobile like '%" + keyword + "%' or u.creator like '%"+keyword+"%'");
         }
         Session session = this.getSessionFactory().openSession();
         Query query = session.createQuery(sb.toString());
