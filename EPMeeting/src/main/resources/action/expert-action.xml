@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="expert" extends="struts2" namespace="/expert">
+        <action name="e_*" class="com.epmeeting.action.ExpertAction" method="{1}">
+            <result name="{1}">/pages/expert/{1}.jsp</result>
+            <result name="success" type="redirect">/expert/e_list.action</result>
+        </action>
+    </package>
+</struts>

@@ -9,31 +9,13 @@
     <link href="/css/admin/smartMenu.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="/css/bootstrap/bootstrap.css" />
     <link rel="stylesheet" href="/css/user/add.css" />
-    <title>系统管理员【添加用户】</title>
+    <title>系统管理员【查找用户】</title>
 </head>
 <body>
 <div id="admin">
     <jsp:include page="../common/menu.jsp"/>
     <div class="ad-comment-box" id="ad-comment">
-        <div class="ad-top-comment">
-            <div class="ad-message">
-                <div class="ad-top-right">
-                    <div class="ad-welcom">
-                        <div class="ad-wel-img"><img src="/images/admin/min_logo.png" height="36" width="36"></div>
-                        <div class="ad-wel-text">
-                            <div class="font-wel">欢迎您！<strong>${__current_username__}</strong>【${__date__}】<a href="javascript:;"><strong>【退出】</strong></a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ad-sub-nav-box content-tabs">
-                <div class="ad-sub-wraper page-tabs J_menuTabs">
-                    <ul class="ad-sub-list page-tabs-content">
-                        <li class="active J_menuTab">查找用户</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <jsp:include page="../common/header.jsp"/>
         <div class="ad-main-comment J_mainContent" id="ad-iframe" style=" min-height: 600px;">
             <div style="width:100%;text-align: center; padding-top: 15px">
                 <form action="/user/u_list.action" method="get" style="margin: 0;">

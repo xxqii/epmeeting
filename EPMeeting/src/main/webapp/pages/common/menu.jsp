@@ -14,14 +14,14 @@
                     </dd>
                 </dl>
             </li>
-            <li>
+            <li id="_li_expert">
                 <div class="li-item"><em class="scm li-ico ic2"></em>专家管理<span class="scm arrow"></span></div>
                 <dl>
-                    <dd>
-                        <a href="#" class="dd-item">查找专家<span class="scm dd-ar"></span></a>
+                    <dd id="_expert_list">
+                        <a href="/expert/e_list.action" class="dd-item">查找专家<span class="scm dd-ar"></span></a>
                     </dd>
-                    <dd>
-                        <a href="#" class="dd-item">新增专家<span class="scm dd-ar"></span></a>
+                    <dd id="_expert_addui">
+                        <a href="/expert/e_addui.action" class="dd-item">新增专家<span class="scm dd-ar"></span></a>
                     </dd>
                 </dl>
             </li>
@@ -64,14 +64,20 @@
     if(pathname == '/user/u_addui.action') {    //新增用户
         $("#_li_user").addClass("over");
         $("#_user_addui").addClass("on");
-    } else if(pathname == '/user/u_list.action') {
+    } else if(pathname == '/user/u_list.action') {  //查找用户
         $("#_li_user").addClass("over");
         $("#_user_list").addClass("on");
-    } else if(pathname == '/material/m_uploadui.action') {
+    } else if(pathname == '/material/m_uploadui.action') {  //资料上传
         $("#_li_material").addClass("over");
         $("#_material_uploadui").addClass("on");
-    } else if(pathname == '/material/m_list.action') {
+    } else if(pathname == '/material/m_list.action') {  //资料查找
         $("#_li_material").addClass("over");
         $("#_material_list").addClass("on");
+    } else if(pathname == '/expert/e_addui.action') {   //新增专家
+        $("#_li_expert").addClass("over");
+        $("#_expert_addui").addClass("on");
+    } else if(pathname == '/expert/e_list.action') {    //查找专家
+        $("#_li_expert").addClass("over");
+        $("#_expert_list").addClass("on");
     }
 </script>

@@ -50,7 +50,6 @@ public class UserDaoImpl extends BaseDao implements UserDao {
         Session session = this.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         session.update(user);
-        logger.info("" + user.getBirthday().toLocaleString());
         tx.commit();
         session.close();
     }

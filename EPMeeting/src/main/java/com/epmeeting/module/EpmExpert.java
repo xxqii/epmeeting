@@ -19,91 +19,218 @@ public class EpmExpert implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
+
     /**
      * 专家编号
      */
-    @Column(name="expert_number")
-    private String expertNumber;
-    /*
-   专家姓名
+    private String number;
+    /**
+    * 专家姓名
      */
-    @Column(name="expert_name")
-    private String expertName;
+    private String name;
+
     /**
      * 专家性别，0：男性；1：女性。
      */
-    @Column(name = "sex")
     private short sex;
-    /*
-    专家生日
+
+    /**
+     * 专家生日
      */
-    @Column(name="birthday")
+    @Temporal(TemporalType.DATE)
+    @Column(name = "birthday")
     private Date birthday;
-    /*
-    专家职务
+
+    /**
+     * 专家职务
      */
-    @Column(name="expert_position")
-    private String expertPosition;
+    private String position;
     /*
     专家职称
      */
-    @Column(name="expert_title")
-    private String expertTitle;
+    private String title;
     /*
     专家学历
      */
-    @Column(name="expert_education")
-    private String expertEducation;
+    private String education;
     /*
     专家学位
      */
-    @Column(name="expert_degree")
-    private String expertDegree;
+    private String degree;
     /*
     工作地点
      */
-    @Column(name="expert_workunit")
-    private String expertWorkUnit;
-    /*
-    所属领域
-     */
-    @Column(name="field")
-    private int fieldId;
+    private String workunit;
+
     /*
     个人成就
      */
-    @Column(name="expert_achievement")
-    private String expertAchievement;
+    private String achievement;
     /*
     个人简介
      */
-    @Column(name="expert_introduction")
-    private String expertIntroduction;
+    private String introduction;
     /*
     手机
      */
-    @Column(name="expert_mobile")
-    private int expertMobile;
+    private String mobile;
     /*
     电话
      */
-    @Column(name="expert_tel")
-    private int expertTel;
+    private String telphone;
     /*
     qq
      */
-    @Column(name="expert_QQ")
-    private int QQ;
+    private int qq;
     /*
     邮箱
      */
-    @Column(name="expert_Email")
-    private String expertEmail;
+    private String email;
+
     /**
      * 图像url连接
      */
-    @Column(name = "expert_avatar")
     private String avatar;
+
+    /**
+     * 添加时间
+     */
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="create_time")
+    private Date createTime;
+    /**
+     * 添加者
+     */
+    @Column(name="creator")
+    private String creator;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public short getSex() {
+        return sex;
+    }
+
+    public void setSex(short sex) {
+        this.sex = sex;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public String getWorkunit() {
+        return workunit;
+    }
+
+    public void setWorkunit(String workunit) {
+        this.workunit = workunit;
+    }
+
+    public String getAchievement() {
+        return achievement;
+    }
+
+    public void setAchievement(String achievement) {
+        this.achievement = achievement;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public String getTelphone() {
+        return telphone;
+    }
+
+    public void setTelphone(String telphone) {
+        this.telphone = telphone;
+    }
+
+    public int getQq() {
+        return qq;
+    }
+
+    public void setQq(int qq) {
+        this.qq = qq;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getAvatar() {
         return avatar;
@@ -113,108 +240,19 @@ public class EpmExpert implements Serializable {
         this.avatar = avatar;
     }
 
-    public int getId() { return id; }
-
-    public void setId(int id) { this.id = id; }
-
-    public int getExpertTel() { return expertTel; }
-
-    public void setExpertTel(int expertTel) { this.expertTel = expertTel; }
-
-    public String getExpertNumber() { return expertNumber; }
-
-    public void setExpertNumber(String expertNumber) { this.expertNumber = expertNumber; }
-
-    public String getExpertName() { return expertName; }
-
-    public void setExpertName(String expertName) { this.expertName = expertName; }
-
-    public short getSex() { return sex; }
-
-    public void setSex(short sex) { this.sex = sex; }
-
-    public Date getBirthday() { return birthday; }
-
-    public void setBirthday(Date birthday) { this.birthday = birthday; }
-
-    public String getExpertPosition() { return expertPosition; }
-
-    public void setExpertPosition(String expertPosition) { this.expertPosition = expertPosition; }
-
-    public String getExpertTitle() { return expertTitle; }
-
-    public void setExpertTitle(String expertTitle) { this.expertTitle = expertTitle; }
-
-    public String getExpertEducation() { return expertEducation; }
-
-    public void setExpertEducation(String expertEducation) { this.expertEducation = expertEducation; }
-
-    public String getExpertDegree() { return expertDegree; }
-
-    public void setExpertDegree(String expertDegree) { this.expertDegree = expertDegree; }
-
-    public String getExpertWorkUnit() { return expertWorkUnit; }
-
-    public void setExpertWorkUnit(String expertWorkUnit) { this.expertWorkUnit = expertWorkUnit; }
-
-    public int getFieldId() { return fieldId; } public void setFieldId(int fieldId) { this.fieldId = fieldId; }
-
-    public String getExpertAchievement() { return expertAchievement; }
-
-    public void setExpertAchievement(String expertAchievement) { this.expertAchievement = expertAchievement; }
-
-    public String getExpertIntroduction() {
-        return expertIntroduction;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setExpertIntroduction(String expertIntroduction) {
-        this.expertIntroduction = expertIntroduction;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public int getExpertMobile() {
-        return expertMobile;
+    public String getCreator() {
+        return creator;
     }
 
-    public void setExpertMobile(int expertMobile) {
-        this.expertMobile = expertMobile;
-    }
-
-    public int getQQ() {
-        return QQ;
-    }
-
-    public void setQQ(int QQ) {
-        this.QQ = QQ;
-    }
-
-    public String getExpertEmail() {
-        return expertEmail;
-    }
-
-    public void setExpertEmail(String expertEmail) {
-        this.expertEmail = expertEmail;
-    }
-
-    @Override
-    public String toString() {
-        return "EpmExpert{" +
-                "id=" + id +
-                ", expertNumber='" + expertNumber + '\'' +
-                ", expertName='" + expertName + '\'' +
-                ", sex=" + sex +
-                ", birthday=" + birthday +
-                ", expertPosition='" + expertPosition + '\'' +
-                ", expertTitle='" + expertTitle + '\'' +
-                ", expertEducation='" + expertEducation + '\'' +
-                ", expertDegree='" + expertDegree + '\'' +
-                ", expertWorkUnit='" + expertWorkUnit + '\'' +
-                ", fieldId=" + fieldId +
-                ", expertAchievement='" + expertAchievement + '\'' +
-                ", expertIntroduction='" + expertIntroduction + '\'' +
-                ", expertMobile=" + expertMobile +
-                ", expertTel=" + expertTel +
-                ", QQ=" + QQ +
-                ", expertEmail='" + expertEmail + '\'' +
-                '}';
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 }

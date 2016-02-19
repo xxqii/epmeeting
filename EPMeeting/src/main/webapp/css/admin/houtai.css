@@ -27,7 +27,7 @@ html,body{height:100%;}
 .ad-menu .ad-list  dd.on .dd-item{color:#FFF;}
 .ad-comment-box{margin-left:235px;background-color:#ededef;height:100%;}
 .ad-comment-box .ad-top-comment{}
-.ad-top-comment .ad-message{height: 50px;padding:0 30px;background-color:#ededef;}
+.ad-top-comment .ad-message{height: 88px;padding:0;}
 .ad-top-comment .ad-message .ad-top-left{float:left;margin-top: 9px;}
 .ad-top-comment .ad-message .ad-change-btn{float:left;margin-top:6px;}
 .ad-top-comment .ad-message .ad-list-btn{display:inline-block;width:16px;height:13px;background-position:-62px -29px;}
