@@ -36,6 +36,12 @@ public class UserAction extends ActionSupport {
     private UserService userService;
 
     /**
+     * 修改密码使用
+     */
+    private String password;
+    private String confirmPassword;
+
+    /**
      * 跳转到首页
      * @return
      */
@@ -158,6 +164,31 @@ public class UserAction extends ActionSupport {
         return this.SUCCESS;
     }
 
+    /**
+     * 修改密码
+     * @return
+     */
+    public String changepwdui() {
+        user = (EpmUser)ServletActionContext.getRequest().getAttribute("__current_user__");
+        return "changepwdui";
+    }
+
+    public String changepwd() {
+        EpmUser tmpUser = userService.get(user.getId());
+        if(!password.equals(confirmPassword)) {
+            resultCode.setMessage("两次密码输入不一致");
+            return "changepwdui";
+        }
+
+        if(!tmpUser.getPasswdMd5().equals(MD5Utils.encrypt(user.getPasswdMd5()))) {
+            resultCode.setMessage("旧密码错误");
+            return "changepwdui";
+        }
+        tmpUser.setPasswdMd5(MD5Utils.encrypt(password));
+        userService.update(tmpUser);
+        return "login";
+    }
+
     public EpmUser getUser() {
         return user;
     }
@@ -204,5 +235,21 @@ public class UserAction extends ActionSupport {
 
     public void setKeyword(String keyword) {
         this.keyword = keyword;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

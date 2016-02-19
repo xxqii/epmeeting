@@ -13,9 +13,8 @@
 </head>
 <body>
 <div id="admin">
-    <jsp:include page="../common/menu.jsp"/>
+    <jsp:include page="../common/header.jsp"/>
     <div class="ad-comment-box" id="ad-comment">
-        <jsp:include page="../common/header.jsp"/>
         <div class="ad-main-comment J_mainContent" id="ad-iframe" style=" min-height: 600px;">
             <!--资料列表-->
             <div class="right_cont">

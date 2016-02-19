@@ -13,9 +13,8 @@
 </head>
 <body>
 <div id="admin">
-    <jsp:include page="../common/menu.jsp"/>
+    <jsp:include page="../common/header.jsp"/>
     <div class="ad-comment-box" id="ad-comment">
-        <jsp:include page="../common/header.jsp"/>
         <div class="ad-main-comment J_mainContent" id="ad-iframe" style=" min-height: 600px;">
             <div style="width:100%;text-align: center; padding-top: 15px">
                 <form action="/expert/e_list.action" method="get" style="margin: 0;">
